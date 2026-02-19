@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>WordPress Setup Guide — Gary L. Ebert & Co.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --navy: #1e2a7a;
+      --red: #c0181f;
+      --white: #fff;
+      --gray-light: #f4f5f9;
+      --gray-mid: #e0e2ee;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Raleway', sans-serif; background: #f7f8fc; color: #444; line-height: 1.7; }
+    a { color: var(--navy); }
+    .header {
+      background: linear-gradient(135deg, #141c5a, #1e2a7a);
+      color: #fff;
+      padding: 50px 40px;
+      text-align: center;
+    }
+    .header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+    .header p { font-size: 1rem; opacity: .8; }
+    .badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; }
+    .section {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 20px rgba(30,42,122,.08);
+      padding: 36px 40px;
+      margin-bottom: 28px;
+    }
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    h2 { font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+    h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin: 20px 0 8px; }
+    p { margin-bottom: 12px; font-size: .93rem; }
+    ol, ul { padding-left: 22px; margin-bottom: 14px; }
+    li { margin-bottom: 7px; font-size: .92rem; }
+    .step-list { list-style: none; padding: 0; }
+    .step-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px; height: 28px;
+      background: var(--red);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; font-weight: 800;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-text strong { display: block; font-size: .92rem; color: var(--navy); margin-bottom: 3px; }
+    .step-text span { font-size: .85rem; color: #666; }
+    .highlight-box {
+      background: var(--gray-light);
+      border-left: 4px solid var(--navy);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .highlight-box.red { border-left-color: var(--red); }
+    .highlight-box p { margin: 0; font-size: .87rem; }
+    .recommended {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 10px;
+      border-radius: 50px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .plugin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .plugin-card {
+      background: var(--gray-light);
+      border-radius: 10px;
+      padding: 18px 20px;
+      border: 1px solid var(--gray-mid);
+    }
+    .plugin-card h4 { font-size: .88rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .plugin-card p { font-size: .8rem; color: #666; margin: 0; }
+    .plugin-card .plugin-type {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .colors-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+    .color-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+    .chip {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,.1);
+    }
+    .cost-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    .cost-table th, .cost-table td { padding: 10px 14px; text-align: left; font-size: .86rem; }
+    .cost-table th { background: var(--navy); color: #fff; font-weight: 700; }
+    .cost-table tr:nth-child(even) td { background: var(--gray-light); }
+    .cost-table td:last-child { font-weight: 700; color: var(--navy); }
+    .footer-guide {
+      text-align: center;
+      padding: 30px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 20px rgba(30,42,122,.08);
+    }
+    .footer-guide h3 { font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+    .footer-guide p { font-size: .88rem; color: #666; margin-bottom: 20px; }
+    .btn {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    @media(max-width:640px){
+      .section { padding: 24px 20px; }
+      .plugin-grid { grid-template-columns: 1fr; }
+      .header { padding: 36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge"><i class="fab fa-wordpress"></i> WordPress Setup Guide</div>
+  <h1>Gary L. Ebert &amp; Co. — Website Rebuild Guide</h1>
+  <p>Step-by-step instructions to get your modern website live on WordPress</p>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-num">📋</div>
+    <h2>Overview &amp; What You'll Need</h2>
+    <p>This guide walks you through setting up a <strong>WordPress website</strong> for Gary L. Ebert &amp; Co. that matches the modern redesign in <code>index.html</code>. WordPress makes it easy to update content, add photos, and manage the site without touching code.</p>
+
+    <h3>What You'll Need:</h3>
+    <ul>
+      <li><strong>Domain Name</strong> — e.g., <em>garylebert.com</em> or <em>garyebertpainting.com</em></li>
+      <li><strong>Web Hosting</strong> — A place to host the site (recommendations below)</li>
+      <li><strong>About 2–3 hours</strong> to set everything up</li>
+      <li><strong>Your photos</strong> — For the portfolio and about sections</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p>💡 <strong>Tip:</strong> The <code>index.html</code> file in this folder is a fully working design preview. Open it in any browser to see the final look before setting up WordPress.</p>
+    </div>
+  </div>
+
+  <!-- STEP 1: HOSTING -->
+  <div class="section">
+    <div class="section-num">1</div>
+    <h2>Step 1 — Choose a Domain &amp; Hosting</h2>
+    <p>You need two things: a <strong>domain name</strong> (your website address) and <strong>web hosting</strong> (where your site lives).</p>
+
+    <h3>Recommended Hosting Providers:</h3>
+    <ul class="step-list">
+      <li>
+        <div class="step-num">★</div>
+        <div class="step-text">
+          <strong>Bluehost — <a href="https://bluehost.com" target="_blank">bluehost.com</a> <span class="recommended">Best for Beginners</span></strong>
+          <span>~$3–5/month. Includes free domain, free SSL, and 1-click WordPress install. Excellent 24/7 support.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">★</div>
+        <div class="step-text">
+          <strong>SiteGround — <a href="https://siteground.com" target="_blank">siteground.com</a></strong>
+          <span>~$4–6/month. Excellent performance and security. Great for small businesses.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">★</div>
+        <div class="step-text">
+          <strong>DreamHost — <a href="https://dreamhost.com" target="_blank">dreamhost.com</a></strong>
+          <span>~$3–5/month. Simple and reliable. Includes free domain and unlimited email.</span>
+        </div>
+      </li>
+    </ul>
+
+    <h3>Domain Name Suggestions:</h3>
+    <ul>
+      <li>garylebert.com</li>
+      <li>garyebertpainting.com</li>
+      <li>garyebertco.com</li>
+      <li>lebertpainting.com</li>
+    </ul>
+  </div>
+
+  <!-- STEP 2: INSTALL WORDPRESS -->
+  <div class="section">
+    <div class="section-num">2</div>
+    <h2>Step 2 — Install WordPress (5 Minutes)</h2>
+    <p>All major hosting providers include a <strong>1-click WordPress installer</strong>. Here's how it works with Bluehost (others are very similar):</p>
+
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Log in to your hosting control panel (cPanel or hPanel)</strong>
+          <span>After signing up for hosting, you'll receive login details via email.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Find "WordPress" or "Install WordPress"</strong>
+          <span>Look for the WordPress icon in the "Website" or "Website Builders" section.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Click "Install" and fill in your site details</strong>
+          <span>Site name: "Gary L. Ebert &amp; Co." — Username: your choice — Password: something strong.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Wait 2–3 minutes for installation to complete</strong>
+          <span>You'll receive a link to your WordPress dashboard (usually yoursite.com/wp-admin).</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Log in at yoursite.com/wp-admin</strong>
+          <span>You're now inside your WordPress dashboard! The hard part is done.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 3: THEME -->
+  <div class="section">
+    <div class="section-num">3</div>
+    <h2>Step 3 — Install the Right WordPress Theme</h2>
+    <p>A <strong>theme</strong> controls how your site looks. We recommend using a <strong>page builder theme</strong> that lets you build the design without coding.</p>
+
+    <h3>Best Themes for This Design:</h3>
+    <ul class="step-list">
+      <li>
+        <div class="step-num">★</div>
+        <div class="step-text">
+          <strong>Astra Theme + Elementor Page Builder <span class="recommended">Top Pick</span></strong>
+          <span>Free to start. Astra is the most popular WordPress theme. Elementor is a drag-and-drop builder. Together they recreate the modern layout from our design perfectly. Install: Appearance → Themes → Search "Astra" → Install → Activate.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">★</div>
+        <div class="step-text">
+          <strong>Hello Elementor + Elementor Pro</strong>
+          <span>~$59/year for Elementor Pro. The most powerful visual builder. Best if you want full control over every detail of the design.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">★</div>
+        <div class="step-text">
+          <strong>GeneratePress + Elementor</strong>
+          <span>Lightweight and fast. Another great free option with Elementor for visual editing.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="highlight-box">
+      <p>📌 <strong>How to install a theme:</strong> Dashboard → Appearance → Themes → Add New → Search for theme name → Install → Activate</p>
+    </div>
+  </div>
+
+  <!-- STEP 4: PLUGINS -->
+  <div class="section">
+    <div class="section-num">4</div>
+    <h2>Step 4 — Install Essential Plugins</h2>
+    <p>Plugins add functionality to your site. Go to <strong>Dashboard → Plugins → Add New</strong> and install these:</p>
+
+    <div class="plugin-grid">
+      <div class="plugin-card">
+        <span class="plugin-type">Page Builder</span>
+        <h4>Elementor</h4>
+        <p>Drag-and-drop visual editor to build your pages exactly like the design mockup. Free version is very capable.</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">Contact Form</span>
+        <h4>WPForms Lite</h4>
+        <p>Easy contact form builder. Creates the estimate request form seen on the site. Free version works great.</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">SEO</span>
+        <h4>Yoast SEO</h4>
+        <p>Helps Google find your site. Adds SEO meta descriptions so people searching "painter Lehigh Valley" can find you.</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">Performance</span>
+        <h4>W3 Total Cache</h4>
+        <p>Makes your website load faster, which is important for Google rankings and user experience.</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">Security</span>
+        <h4>Wordfence Security</h4>
+        <p>Free firewall and malware scanner. Protects your site from hackers. Essential for any business website.</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">Gallery / Portfolio</span>
+        <h4>Envira Gallery</h4>
+        <p>Beautiful photo galleries for your portfolio section. Drag-and-drop gallery management. Free version available.</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">Backup</span>
+        <h4>UpdraftPlus</h4>
+        <p>Automatic backups of your site to Google Drive or Dropbox. Essential — always have a backup!</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-type">Social / Reviews</span>
+        <h4>Google Reviews Widget</h4>
+        <p>Display your Google Reviews on the website automatically. Great for building trust with new visitors.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p>📌 <strong>How to install plugins:</strong> Dashboard → Plugins → Add New → Search plugin name → Install → Activate</p>
+    </div>
+  </div>
+
+  <!-- STEP 5: COLORS & FONTS -->
+  <div class="section">
+    <div class="section-num">5</div>
+    <h2>Step 5 — Set Your Brand Colors &amp; Fonts</h2>
+    <p>To match the redesign exactly, use these colors and fonts throughout your WordPress theme settings and Elementor designs:</p>
+
+    <h3>Brand Colors:</h3>
+    <div class="colors-row">
+      <div class="color-chip">
+        <div class="chip" style="background:#1e2a7a;"></div>
+        <div>
+          <strong>Navy Blue (Primary)</strong><br>
+          <code>#1e2a7a</code>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="chip" style="background:#141c5a;"></div>
+        <div>
+          <strong>Dark Navy</strong><br>
+          <code>#141c5a</code>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="chip" style="background:#c0181f;"></div>
+        <div>
+          <strong>Red (Accent)</strong><br>
+          <code>#c0181f</code>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="chip" style="background:#f4f5f9; border:1px solid #ddd;"></div>
+        <div>
+          <strong>Light Gray (BG)</strong><br>
+          <code>#f4f5f9</code>
+        </div>
+      </div>
+    </div>
+
+    <h3>Brand Fonts (Free from Google):</h3>
+    <ul>
+      <li><strong>Dancing Script Bold</strong> — For the logo/brand name "Gary L. Ebert &amp; Co." (same style as current site)</li>
+      <li><strong>Raleway</strong> — For all body text, headings, and navigation</li>
+    </ul>
+    <p>In Elementor: Site Settings → Typography → Set these as your global fonts.<br>
+    In Astra: Appearance → Customize → Typography → choose Google Fonts.</p>
+  </div>
+
+  <!-- STEP 6: PAGES -->
+  <div class="section">
+    <div class="section-num">6</div>
+    <h2>Step 6 — Create Your Pages</h2>
+    <p>Go to <strong>Pages → Add New</strong> and create these pages. Use Elementor to design each one by clicking "Edit with Elementor":</p>
+
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Home (set as your front page)</strong>
+          <span>Hero section + Stats bar + About preview + Services preview + CTA banner. Reference the index.html file for layout.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>About Us</strong>
+          <span>Gary's story, photo, values, the scripture quote, and the promise items.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Services</strong>
+          <span>The 6 service cards with icons — Painting, Faux, Drywall, Remodeling, Carpentry, Maintenance.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Portfolio / Our Work</strong>
+          <span>Photo gallery grid using Envira Gallery. Upload photos from current site + new project photos.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Testimonials</strong>
+          <span>Client review cards. Can also embed Google Reviews using the Google Reviews Widget plugin.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-text">
+          <strong>Contact Us</strong>
+          <span>WPForms contact form + phone number + service area. Optionally embed Google Maps.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="highlight-box">
+      <p>📌 <strong>Set your front page:</strong> Settings → Reading → "A static page" → choose "Home" from the dropdown.</p>
+    </div>
+  </div>
+
+  <!-- STEP 7: HEADER & FOOTER -->
+  <div class="section">
+    <div class="section-num">7</div>
+    <h2>Step 7 — Build Your Header &amp; Footer</h2>
+
+    <h3>Header (Navigation):</h3>
+    <p>In Elementor Pro (or Astra's header builder):</p>
+    <ul>
+      <li>Add a <strong>top bar</strong> with phone number and hours (dark navy background)</li>
+      <li>Add the <strong>main nav</strong> with navy background and "Gary L. Ebert &amp; Co." in Dancing Script font</li>
+      <li>Make it <strong>sticky</strong> (stays at top when you scroll) — this is an option in Elementor's header settings</li>
+      <li>Add a red "Contact Us" button on the right side</li>
+    </ul>
+
+    <h3>Footer:</h3>
+    <ul>
+      <li>4-column footer: Brand/logo + Quick Links + Services + Contact Info</li>
+      <li>Red stripe bar above the bottom row: "⭐ Professional Quality Work Guaranteed ⭐"</li>
+      <li>Dark navy background to match the design</li>
+    </ul>
+  </div>
+
+  <!-- STEP 8: CONTACT FORM -->
+  <div class="section">
+    <div class="section-num">8</div>
+    <h2>Step 8 — Set Up the Contact Form</h2>
+
+    <ul class="step-list">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Go to WPForms → Add New</strong>
+          <span>Choose the "Simple Contact Form" template as a starting point.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Add these fields: First Name, Last Name, Phone, Email, Service Type (dropdown), Project Details (text area)</strong>
+          <span>Drag fields from the left panel. Reorder by dragging.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Set up notifications</strong>
+          <span>Settings → Notifications → Set "Send To" to Gary's email address. You'll get an email every time someone fills out the form.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Set up confirmations</strong>
+          <span>Settings → Confirmations → Set a thank-you message: "Thank you! We'll be in touch within 1 business day."</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <strong>Embed on your Contact page</strong>
+          <span>Save the form, then on your Contact page in Elementor, add a "WPForms" widget and select your form.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STEP 9: SEO & GO LIVE -->
+  <div class="section">
+    <div class="section-num">9</div>
+    <h2>Step 9 — SEO Setup &amp; Going Live</h2>
+
+    <h3>Yoast SEO Setup:</h3>
+    <ul>
+      <li>Go to <strong>SEO → General</strong> and run the setup wizard</li>
+      <li>Site title: "Gary L. Ebert &amp; Co. | Painter &amp; Home Improvement Lehigh Valley PA"</li>
+      <li>On each page, fill in the "Yoast SEO" section at the bottom with a title and meta description</li>
+    </ul>
+
+    <h3>Google Business Profile:</h3>
+    <ul>
+      <li>Go to <a href="https://business.google.com" target="_blank">business.google.com</a> and claim/create your listing</li>
+      <li>This is FREE and helps you appear in local Google searches for "painter near me"</li>
+      <li>Add your photos, hours, phone number, and website</li>
+    </ul>
+
+    <h3>SSL Certificate:</h3>
+    <ul>
+      <li>Most hosts include a free SSL (the padlock icon in the browser). Enable it in your hosting panel</li>
+      <li>In WordPress: Settings → General → Change "http://" to "https://" in both URL fields</li>
+    </ul>
+
+    <div class="highlight-box red">
+      <p>🚨 <strong>Before going live, test:</strong> Fill out the contact form yourself. Check the site on your phone. Click every navigation link. Make sure all photos are loaded.</p>
+    </div>
+  </div>
+
+  <!-- COST ESTIMATE -->
+  <div class="section">
+    <div class="section-num">💰</div>
+    <h2>Estimated Annual Costs</h2>
+
+    <table class="cost-table">
+      <thead>
+        <tr><th>Item</th><th>Option</th><th>Approx. Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Domain Name</td><td>GoDaddy / Namecheap</td><td>~$12–15/year</td></tr>
+        <tr><td>Web Hosting</td><td>Bluehost / SiteGround</td><td>~$36–72/year</td></tr>
+        <tr><td>WordPress</td><td>Free (always)</td><td>$0</td></tr>
+        <tr><td>Astra Theme</td><td>Free version</td><td>$0</td></tr>
+        <tr><td>Elementor</td><td>Free version (or Pro for ~$59/yr)</td><td>$0–59/year</td></tr>
+        <tr><td>WPForms Lite</td><td>Free version</td><td>$0</td></tr>
+        <tr><td>SSL Certificate</td><td>Included with most hosts</td><td>$0</td></tr>
+        <tr><td>All other plugins</td><td>Free versions</td><td>$0</td></tr>
+        <tr style="background:#e8f5e9;"><td><strong>Total (basic)</strong></td><td></td><td><strong>~$48–87/year</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="section">
+    <div class="section-num">📝</div>
+    <h2>Quick Reference Checklist</h2>
+    <ul>
+      <li>☐ Purchase domain name</li>
+      <li>☐ Sign up for web hosting</li>
+      <li>☐ Install WordPress (1-click)</li>
+      <li>☐ Install Astra theme</li>
+      <li>☐ Install Elementor plugin</li>
+      <li>☐ Install WPForms, Yoast SEO, Wordfence, UpdraftPlus</li>
+      <li>☐ Set global colors (#1e2a7a navy, #c0181f red)</li>
+      <li>☐ Set global fonts (Dancing Script + Raleway)</li>
+      <li>☐ Create 6 pages (Home, About, Services, Portfolio, Testimonials, Contact)</li>
+      <li>☐ Build header with top bar + sticky navigation</li>
+      <li>☐ Build footer with 4 columns + red stripe</li>
+      <li>☐ Set up contact form with email notifications</li>
+      <li>☐ Upload portfolio photos</li>
+      <li>☐ Set up Yoast SEO on each page</li>
+      <li>☐ Enable SSL (https://)</li>
+      <li>☐ Test on mobile and desktop</li>
+      <li>☐ Set up Google Business Profile</li>
+      <li>☐ Go live! 🎉</li>
+    </ul>
+  </div>
+
+  <div class="footer-guide">
+    <h3>Ready to Build?</h3>
+    <p>Open <strong>index.html</strong> in your browser to see the full design mockup.<br>Use it as your visual guide while building in Elementor.</p>
+    <a href="index.html" class="btn">Preview the Design →</a>
+  </div>
+
+</div>
+</body>
+</html>

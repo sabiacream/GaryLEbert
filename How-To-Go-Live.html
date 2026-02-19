@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>How to Go Live — Gary L. Ebert & Co.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root { --navy:#1e2a7a; --red:#c0181f; --green:#2e7d32; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Raleway',sans-serif; background:#f7f8fc; color:#444; line-height:1.7; }
+    a { color:var(--navy); }
+
+    .header {
+      background: linear-gradient(135deg, #141c5a, #1e2a7a);
+      color:#fff; padding:50px 40px; text-align:center;
+    }
+    .header .badge {
+      display:inline-block; background:var(--red); color:#fff;
+      font-size:.7rem; font-weight:700; letter-spacing:2px;
+      text-transform:uppercase; padding:5px 16px; border-radius:50px; margin-bottom:14px;
+    }
+    .header h1 { font-size:2rem; font-weight:800; margin-bottom:8px; }
+    .header p { font-size:.95rem; opacity:.8; max-width:560px; margin:0 auto; }
+
+    .container { max-width:900px; margin:0 auto; padding:36px 24px 60px; }
+
+    /* Summary boxes */
+    .summary-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px;
+    }
+    .summary-card {
+      background:#fff; border-radius:12px; padding:24px 20px; text-align:center;
+      box-shadow:0 2px 16px rgba(30,42,122,.08);
+    }
+    .summary-card .icon {
+      font-size:1.8rem; margin-bottom:10px;
+    }
+    .summary-card h4 { font-size:.88rem; font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .summary-card p { font-size:.78rem; color:#666; }
+    .summary-card .cost { font-size:1.2rem; font-weight:800; color:var(--green); }
+
+    .section {
+      background:#fff; border-radius:14px;
+      box-shadow:0 2px 16px rgba(30,42,122,.08);
+      padding:36px 40px; margin-bottom:24px;
+    }
+    .step-header {
+      display:flex; align-items:center; gap:16px; margin-bottom:20px;
+    }
+    .step-circle {
+      width:50px; height:50px; border-radius:50%;
+      background:var(--navy); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.1rem; font-weight:800; flex-shrink:0;
+    }
+    .step-header h2 { font-size:1.25rem; font-weight:800; color:var(--navy); }
+    .step-header p { font-size:.82rem; color:#888; margin:0; }
+
+    .option-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px 0; }
+    .option-card {
+      border:2px solid #e0e2ee; border-radius:10px; padding:20px;
+      transition:border-color .2s;
+    }
+    .option-card.best { border-color:var(--navy); }
+    .option-card h4 { font-size:.9rem; font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .option-card .price { font-size:.82rem; font-weight:700; color:var(--green); margin-bottom:6px; }
+    .option-card p { font-size:.8rem; color:#666; }
+    .best-tag {
+      display:inline-block; background:var(--navy); color:#fff;
+      font-size:.62rem; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase; padding:2px 9px; border-radius:50px; margin-bottom:8px;
+    }
+    .free-tag {
+      display:inline-block; background:var(--green); color:#fff;
+      font-size:.62rem; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase; padding:2px 9px; border-radius:50px; margin-bottom:8px;
+    }
+
+    ol.steps { padding-left:0; list-style:none; }
+    ol.steps li {
+      display:flex; gap:14px; align-items:flex-start;
+      padding:12px 0; border-bottom:1px solid #eef;
+    }
+    ol.steps li:last-child { border-bottom:none; }
+    .num {
+      width:28px; height:28px; border-radius:50%;
+      background:var(--red); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.75rem; font-weight:800; flex-shrink:0; margin-top:2px;
+    }
+    .step-body strong { display:block; font-size:.92rem; color:var(--navy); margin-bottom:3px; }
+    .step-body span { font-size:.85rem; color:#666; }
+    .step-body code {
+      background:#f4f5f9; border:1px solid #dde; padding:2px 7px;
+      border-radius:4px; font-size:.82rem; color:var(--navy);
+    }
+
+    .highlight { background:#f4f5f9; border-left:4px solid var(--navy); border-radius:0 8px 8px 0; padding:14px 18px; margin:14px 0; font-size:.88rem; }
+    .highlight.green { border-left-color:var(--green); }
+    .highlight.red { border-left-color:var(--red); }
+
+    .checklist { list-style:none; padding:0; }
+    .checklist li {
+      padding:8px 0; border-bottom:1px solid #eef;
+      font-size:.9rem; display:flex; align-items:center; gap:10px;
+    }
+    .checklist li:last-child { border-bottom:none; }
+    .checklist i { color:var(--navy); width:18px; }
+
+    .big-link {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--navy); color:#fff;
+      padding:10px 22px; border-radius:8px;
+      font-weight:700; font-size:.85rem; text-decoration:none;
+      margin-top:10px; transition:background .2s;
+    }
+    .big-link:hover { background:#141c5a; }
+    .big-link.red-btn { background:var(--red); }
+    .big-link.red-btn:hover { background:#9a1015; }
+
+    .footer-box {
+      background:#fff; border-radius:14px; padding:40px;
+      box-shadow:0 2px 16px rgba(30,42,122,.08);
+      text-align:center;
+    }
+    .footer-box h3 { font-size:1.4rem; color:var(--navy); font-weight:800; margin-bottom:8px; }
+    .footer-box p { font-size:.9rem; color:#666; margin-bottom:24px; }
+
+    @media(max-width:640px){
+      .summary-grid { grid-template-columns:1fr; }
+      .option-grid { grid-template-columns:1fr; }
+      .section { padding:24px 20px; }
+      .header { padding:36px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge"><i class="fas fa-rocket"></i> &nbsp;No WordPress Needed</div>
+  <h1>How to Put Your Website Live</h1>
+  <p>The <strong>index.html</strong> file IS your complete website. Here's all you need to do to get it online in under an hour.</p>
+</div>
+
+<div class="container">
+
+  <!-- SUMMARY -->
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="icon">🌐</div>
+      <h4>Domain Name</h4>
+      <p>Your web address<br>(e.g. garyebertco.com)</p>
+      <div class="cost">~$12/yr</div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">☁️</div>
+      <h4>Hosting</h4>
+      <p>Where your site lives<br>(Netlify = FREE)</p>
+      <div class="cost">$0–$36/yr</div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">📧</div>
+      <h4>Contact Form</h4>
+      <p>Formspree sends you<br>emails for free</p>
+      <div class="cost">$0</div>
+    </div>
+  </div>
+
+  <!-- STEP 1: FORMSPREE -->
+  <div class="section">
+    <div class="step-header">
+      <div class="step-circle">1</div>
+      <div>
+        <h2>Set Up the Contact Form (5 min)</h2>
+        <p>So estimate requests get emailed directly to Gary — free forever</p>
+      </div>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <div class="num">1</div>
+        <div class="step-body">
+          <strong>Go to <a href="https://formspree.io" target="_blank">formspree.io</a> and click "Get Started Free"</strong>
+          <span>Sign up with any email address. The free plan allows 50 submissions/month — more than enough.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div class="step-body">
+          <strong>Click "+ New Form"</strong>
+          <span>Name it something like "Gary Ebert Estimate Request". Set the email to Gary's email address.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div class="step-body">
+          <strong>Copy your Form ID — it looks like: <code>xpzgkbvd</code></strong>
+          <span>It's in the form's endpoint URL: formspree.io/f/<strong>xpzgkbvd</strong></span>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div class="step-body">
+          <strong>Open <code>index.html</code> in a text editor (Notepad works fine)</strong>
+          <span>Press <kbd>Ctrl+H</kbd> (Find &amp; Replace). Find: <code>YOUR_FORMSPREE_ID</code> — Replace with your actual ID (e.g. <code>xpzgkbvd</code>). Click Replace All. Save.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div class="step-body">
+          <strong>Verify your email address</strong>
+          <span>Formspree will send a confirmation email. Click the link in it to activate your form.</span>
+        </div>
+      </li>
+    </ol>
+
+    <div class="highlight green">
+      ✅ <strong>That's it for the form.</strong> Once deployed, every estimate request will land directly in Gary's inbox with the client's name, phone, service type, and project details.
+    </div>
+  </div>
+
+  <!-- STEP 2: HOSTING -->
+  <div class="section">
+    <div class="step-header">
+      <div class="step-circle">2</div>
+      <div>
+        <h2>Host the Website</h2>
+        <p>Choose one of these options — both work great with just one HTML file</p>
+      </div>
+    </div>
+
+    <div class="option-grid">
+      <div class="option-card best">
+        <div class="best-tag">⭐ Recommended</div>
+        <h4>Netlify — netlify.com</h4>
+        <div class="price">FREE forever (no credit card)</div>
+        <p>Drag &amp; drop your <code>index.html</code> file and your site is live in 60 seconds. Free SSL (https), free subdomain, blazing fast. Can connect your own domain for ~$12/yr.</p>
+      </div>
+      <div class="option-card">
+        <div class="free-tag">Also Free</div>
+        <h4>GitHub Pages</h4>
+        <div class="price">FREE</div>
+        <p>Free hosting through GitHub. Slightly more technical (requires a free GitHub account). Excellent for long-term reliability. Free subdomain or connect your own domain.</p>
+      </div>
+      <div class="option-card">
+        <h4>Bluehost / SiteGround</h4>
+        <div class="price">~$36–72/year</div>
+        <p>Traditional paid hosting. Includes your domain name free for the first year, email accounts (gary@yoursite.com), and phone support. Best if you want professional email too.</p>
+      </div>
+      <div class="option-card">
+        <h4>GoDaddy Hosting</h4>
+        <div class="price">~$36–60/year</div>
+        <p>Very beginner-friendly. Buy your domain and hosting in the same place. They have 24/7 phone support if you get stuck.</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--navy);font-size:1rem;margin:24px 0 14px;">Option A — Netlify (Easiest, Free)</h3>
+    <ol class="steps">
+      <li>
+        <div class="num">1</div>
+        <div class="step-body">
+          <strong>Go to <a href="https://netlify.com" target="_blank">netlify.com</a> and click "Sign up free"</strong>
+          <span>Sign up with your email or Google account. No credit card needed.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div class="step-body">
+          <strong>On your dashboard, scroll down to "Deploy manually"</strong>
+          <span>You'll see a box that says <em>"Drag and drop your site folder here"</em>.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div class="step-body">
+          <strong>Drag the entire Gary folder from your Desktop into that box</strong>
+          <span>Make sure the folder contains <code>index.html</code>. Netlify will upload and deploy it automatically.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div class="step-body">
+          <strong>Your site is live! Netlify gives you a free URL like <code>random-name-123.netlify.app</code></strong>
+          <span>You can change this to something nicer like <code>garyebert.netlify.app</code> for free in Site Settings → Domain → Change site name.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">5</div>
+        <div class="step-body">
+          <strong>(Optional) Connect a custom domain</strong>
+          <span>Buy <code>garyebertco.com</code> from Namecheap (~$12/yr), then in Netlify: Site Settings → Domain Management → Add custom domain. Follow the instructions to point it to Netlify.</span>
+        </div>
+      </li>
+    </ol>
+
+    <div class="highlight">
+      💡 <strong>To update the site later</strong> (add photos, change a phone number, etc.) — just edit <code>index.html</code>, then drag the folder into Netlify again. It redeploys in seconds.
+    </div>
+  </div>
+
+  <!-- STEP 3: DOMAIN -->
+  <div class="section">
+    <div class="step-header">
+      <div class="step-circle">3</div>
+      <div>
+        <h2>Get a Domain Name (~$12/year)</h2>
+        <p>Optional but strongly recommended — looks much more professional than .netlify.app</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--navy);font-size:.95rem;margin-bottom:14px;">Recommended Domain Registrars:</h3>
+    <ol class="steps">
+      <li>
+        <div class="num">★</div>
+        <div class="step-body">
+          <strong><a href="https://namecheap.com" target="_blank">Namecheap.com</a> — Best Price</strong>
+          <span>~$9–13/year. Very easy to use. Free privacy protection included (hides your personal info from public WHOIS records).</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">★</div>
+        <div class="step-body">
+          <strong><a href="https://godaddy.com" target="_blank">GoDaddy.com</a> — Most Familiar</strong>
+          <span>~$12–18/year. Most well-known registrar. Has good phone support if you need help connecting it to Netlify.</span>
+        </div>
+      </li>
+    </ol>
+
+    <h3 style="color:var(--navy);font-size:.95rem;margin:20px 0 10px;">Good Domain Name Options to Check:</h3>
+    <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+      <li style="background:#f4f5f9;border:1px solid #dde;padding:6px 14px;border-radius:6px;font-size:.85rem;font-weight:600;color:var(--navy);"><code>garyebertco.com</code></li>
+      <li style="background:#f4f5f9;border:1px solid #dde;padding:6px 14px;border-radius:6px;font-size:.85rem;font-weight:600;color:var(--navy);"><code>garyebert.com</code></li>
+      <li style="background:#f4f5f9;border:1px solid #dde;padding:6px 14px;border-radius:6px;font-size:.85rem;font-weight:600;color:var(--navy);"><code>garyebertpainting.com</code></li>
+      <li style="background:#f4f5f9;border:1px solid #dde;padding:6px 14px;border-radius:6px;font-size:.85rem;font-weight:600;color:var(--navy);"><code>ebertpainting.com</code></li>
+      <li style="background:#f4f5f9;border:1px solid #dde;padding:6px 14px;border-radius:6px;font-size:.85rem;font-weight:600;color:var(--navy);"><code>ebertandco.com</code></li>
+    </ul>
+    <div class="highlight red">
+      ⚠️ <strong>Check availability first</strong> — go to namecheap.com or godaddy.com and search the domain names above before deciding. Grab it as soon as you find a good one!
+    </div>
+  </div>
+
+  <!-- ADDING PHOTOS -->
+  <div class="section">
+    <div class="step-header">
+      <div class="step-circle" style="background:var(--red);">📷</div>
+      <div>
+        <h2>Adding Your Real Photos</h2>
+        <p>Replace the placeholder boxes with Gary's actual project photos</p>
+      </div>
+    </div>
+
+    <p style="font-size:.9rem; margin-bottom:16px;">Right now the portfolio and about sections have colored placeholder boxes. Here's how to swap in real photos:</p>
+
+    <ol class="steps">
+      <li>
+        <div class="num">1</div>
+        <div class="step-body">
+          <strong>Create an <code>images</code> folder inside your Gary folder</strong>
+          <span>Put all your photos in there. Name them simply: <code>about-gary.jpg</code>, <code>portfolio-1.jpg</code>, <code>portfolio-2.jpg</code>, etc.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">2</div>
+        <div class="step-body">
+          <strong>Open <code>index.html</code> in Notepad (or any text editor)</strong>
+          <span>Press <kbd>Ctrl+F</kbd> to search for <code>about-img-placeholder</code>.</span>
+        </div>
+      </li>
+      <li>
+        <div class="num">3</div>
+        <div class="step-body">
+          <strong>Replace the placeholder div with an &lt;img&gt; tag</strong>
+          <span>Find the block that starts with <code>&lt;div class="about-img-placeholder"&gt;</code> and replace the whole div with:<br>
+          <code>&lt;img src="images/about-gary.jpg" alt="Gary L. Ebert" style="width:100%;height:420px;object-fit:cover;"&gt;</code></span>
+        </div>
+      </li>
+      <li>
+        <div class="num">4</div>
+        <div class="step-body">
+          <strong>For portfolio photos, find each <code>&lt;div class="portfolio-placeholder"&gt;</code></strong>
+          <span>Replace with: <code>&lt;img src="images/portfolio-1.jpg" alt="Project photo" class="portfolio-img"&gt;</code><br>
+          The CSS class <code>portfolio-img</code> already handles sizing and hover zoom effects.</span>
+        </div>
+      </li>
+    </ol>
+
+    <div class="highlight">
+      💡 <strong>Photo tip:</strong> Resize photos to max 1200px wide before uploading (use free tool at <a href="https://squoosh.app" target="_blank">squoosh.app</a>). This keeps the site loading fast.
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section">
+    <div class="step-header">
+      <div class="step-circle" style="background:var(--green);">✓</div>
+      <div>
+        <h2>Go-Live Checklist</h2>
+        <p>Run through this before sharing the site with anyone</p>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li><i class="fas fa-check-square"></i>Replaced YOUR_FORMSPREE_ID in index.html with real Formspree ID</li>
+      <li><i class="fas fa-check-square"></i>Verified Formspree email address (clicked confirmation email)</li>
+      <li><i class="fas fa-check-square"></i>Tested the contact form — submitted it yourself and got the email</li>
+      <li><i class="fas fa-check-square"></i>Added real photos (or removed placeholder text so boxes look intentional)</li>
+      <li><i class="fas fa-check-square"></i>Checked the site on your phone (looks good on mobile)</li>
+      <li><i class="fas fa-check-square"></i>Clicked every navigation link — all scroll correctly</li>
+      <li><i class="fas fa-check-square"></i>Phone number (610) 395-8755 is correct throughout</li>
+      <li><i class="fas fa-check-square"></i>Deployed to Netlify (or your chosen host)</li>
+      <li><i class="fas fa-check-square"></i>Connected custom domain (optional but recommended)</li>
+      <li><i class="fas fa-check-square"></i>Set up Google Business Profile at business.google.com (free &amp; great for local SEO)</li>
+    </ul>
+  </div>
+
+  <!-- TOTAL COST -->
+  <div class="section" style="text-align:center;">
+    <h2 style="color:var(--navy);margin-bottom:20px;">Total Cost to Go Live</h2>
+    <div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:2.5rem;font-weight:800;color:var(--green);">$0</div>
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;">Without a domain<br>(uses .netlify.app address)</div>
+      </div>
+      <div style="width:1px;background:#eee;"></div>
+      <div>
+        <div style="font-size:2.5rem;font-weight:800;color:var(--navy);">~$12</div>
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;">Per year with a<br>custom .com domain</div>
+      </div>
+    </div>
+    <p style="font-size:.82rem;color:#888;margin-top:20px;">No monthly fees. No subscriptions. No WordPress. Just a domain name once a year.</p>
+  </div>
+
+  <div class="footer-box">
+    <h3>Preview Your Design</h3>
+    <p>Open <strong>index.html</strong> in your browser anytime to see how it looks.<br>
+    Make sure you're happy with it before going live.</p>
+    <a href="index.html" class="big-link red-btn"><i class="fas fa-eye"></i> Preview the Website</a>
+  </div>
+
+</div>
+</body>
+</html>
