@@ -180,7 +180,7 @@
         "name": "What areas do you serve in the Lehigh Valley?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We serve the entire Lehigh Valley including Allentown, Bethlehem, Easton, Emmaus, Macungie, Whitehall, Catasauqua, Coopersburg, Quakertown, Saucon Valley, Upper Macungie, Lower Macungie, Salisbury Township, and surrounding communities in Pennsylvania."
+          "text": "We work throughout the Lehigh Valley and nearby Northampton and Lehigh County communities, including Allentown, Bethlehem, Easton, Emmaus, Macungie, Nazareth, Whitehall, and surrounding towns. Call if you are unsure whether you are in range."
         }
       },
       {
@@ -188,7 +188,7 @@
         "name": "How long has Gary L. Ebert & Co. been in business?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Since 1990. Gary learned from his father, a painter for 60 years. Most new projects still come from referrals."
+          "text": "Since 1990. Gary learned from his father, a painter for 60 years—integrity and craft passed down, not just techniques."
         }
       },
       {
@@ -212,7 +212,7 @@
         "name": "Do you clean up after the painting is done?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. We remove materials, clean the work area, and return furniture to its original placement. Optional deep cleaning is available through our partner, Lovely Lemon Cleaning."
+          "text": "Yes. We remove materials, clean the work area, and return furniture to its original placement. Optional deep cleaning can be arranged through a local company we refer; ask on your project."
         }
       },
       {
@@ -611,7 +611,7 @@
       grid-template-columns: 1fr 1.06fr;
       gap: 0;
       align-items: center;
-      padding: clamp(12px, 2vw, 20px) 0 clamp(36px, 5vw, 52px);
+      padding: clamp(6px, 1.2vw, 14px) 0 clamp(28px, 4vw, 44px);
       max-width: 100%;
       width: 100%;
     }
@@ -637,7 +637,8 @@
 
     /* RIGHT panel — navy, text + CTAs */
     .hero-content {
-      padding: 40px 48px 44px max(24px, 4vw);
+      min-width: 0;
+      padding: clamp(28px, 3.5vw, 40px) max(20px, 3.5vw) clamp(32px, 4vw, 42px) max(24px, 4vw);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -655,7 +656,7 @@
       font-size: .78rem;
       font-weight: 600;
       color: rgba(255,255,255,.55);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -668,49 +669,64 @@
       letter-spacing: .5px;
       line-height: 1.18;
       color: var(--white);
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       max-width: 15em;
+      text-wrap: balance;
     }
     .hero-title .hero-title-accent { color: var(--red); }
+    .hero-trust-micro {
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.52);
+      margin: 0 0 12px;
+      max-width: 26rem;
+      line-height: 1.45;
+    }
     .hero-benefit {
-      font-size: clamp(.9rem, 1.15vw, 1rem);
+      font-size: clamp(.88rem, 1.1vw, .98rem);
       font-weight: 500;
       color: rgba(255,255,255,.78);
-      line-height: 1.55;
-      margin: 0 0 22px;
-      max-width: 440px;
+      line-height: 1.52;
+      margin: 0 0 16px;
+      max-width: 26rem;
     }
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 12px 14px;
-      margin-bottom: 20px;
+      gap: 10px 12px;
+      margin-bottom: 16px;
     }
     .btn-hero-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: var(--tap-min);
-      padding: 15px 28px;
-      font-size: .78rem;
-      box-shadow: 0 6px 24px rgba(192,24,31,.32);
+      padding: 15px 30px;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      box-shadow:
+        0 8px 28px rgba(192,24,31,.38),
+        0 0 0 1px rgba(255,255,255,.14);
     }
     .btn-hero-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: var(--tap-min);
-      padding: 14px 24px;
+      padding: 13px 22px;
       border-radius: 50px;
       font-family: var(--body);
-      font-weight: 700;
-      font-size: .7rem;
-      letter-spacing: 1.4px;
+      font-weight: 600;
+      font-size: .66rem;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
-      color: rgba(255,255,255,.92);
-      border: 2px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.38);
+      background: rgba(255,255,255,.05);
       transition: var(--transition);
     }
     .btn-hero-secondary:hover {
@@ -1094,24 +1110,29 @@
     /* ===========================
        PORTFOLIO SECTION
     =========================== */
-    .portfolio { background: var(--gray-light); }
-    .portfolio .section-sub { max-width: 640px; margin-left: auto; margin-right: auto; }
-    .portfolio-note {
+    .portfolio {
+      background: linear-gradient(180deg, #eef0f7 0%, var(--gray-light) 18%, var(--gray-light) 100%);
+      border-top: 1px solid rgba(30,42,122,.08);
+    }
+    .portfolio .section-sub {
       max-width: 560px;
-      margin: 0 auto clamp(20px, 3vw, 28px);
-      font-size: .82rem;
-      color: var(--gray-text);
-      line-height: 1.65;
-      padding: 14px 18px;
-      background: rgba(255,255,255,.75);
-      border-radius: var(--radius);
-      border-left: 4px solid var(--red);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: clamp(1rem, 2.6vw, 1.45rem);
+    }
+    .portfolio .section-tag {
+      color: var(--navy);
+      border: 1px solid rgba(30,42,122,.2);
+      background: var(--white);
+      padding: 6px 14px;
+      border-radius: 50px;
+      display: inline-block;
     }
 
     /* Before / after narrative (no fake photos) */
     .portfolio-spotlight {
       max-width: 920px;
-      margin: 0 auto clamp(24px, 3vw, 32px);
+      margin: 0 auto clamp(20px, 2.6vw, 28px);
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: var(--shadow-sm);
@@ -1161,14 +1182,14 @@
       font-size: 1rem;
     }
     .portfolio-spotlight-foot {
-      padding: 16px 22px 18px;
-      font-size: .84rem;
+      padding: 14px 20px 16px;
+      font-size: .8rem;
       color: var(--gray-text);
-      line-height: 1.65;
+      line-height: 1.55;
       border-top: 1px solid var(--gray-mid);
-      background: rgba(244,245,249,.6);
+      background: rgba(255,255,255,.9);
     }
-    .portfolio-spotlight-foot strong { color: var(--navy-dark); font-weight: 700; }
+    .portfolio-spotlight-foot strong { color: var(--navy-dark); font-weight: 800; }
 
     /* Filter bar */
     .portfolio-filters {
@@ -1228,63 +1249,108 @@
     }
     .portfolio-card-visual {
       position: relative;
-      aspect-ratio: 16/10;
-      background: var(--navy-dark);
       overflow: hidden;
+      background: var(--navy-dark);
     }
-    .portfolio-card-visual img {
+    /* Before/after frame pair — add <img> inside .portfolio-ba-pane-inner when photos are ready */
+    .portfolio-card-ba {
+      display: grid;
+      grid-template-columns: 1fr 4px 1fr;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      min-height: 160px;
+    }
+    .portfolio-ba-divider {
+      background: linear-gradient(180deg, var(--navy-dark) 0%, #0a0e28 50%, var(--navy-dark) 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+    }
+    .portfolio-ba-pane {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: #161f52;
+    }
+    .portfolio-ba-pane--before {
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.04) 0%, transparent 45%),
+        linear-gradient(160deg, #141c4a 0%, #1e2a7a 100%);
+    }
+    .portfolio-ba-pane--after {
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.07) 0%, transparent 50%),
+        linear-gradient(165deg, #1a2460 0%, #2d3ea0 100%);
+    }
+    .portfolio-card:nth-child(4) .portfolio-ba-pane--after {
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08) 0%, transparent 50%),
+        linear-gradient(165deg, #5a1218 0%, #8b1520 55%, #1e2a7a 100%);
+    }
+    .portfolio-ba-pane-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 3;
+      font-size: .58rem;
+      font-weight: 800;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.95);
+      background: rgba(0,0,0,.48);
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .portfolio-ba-pane--after .portfolio-ba-pane-label {
+      left: auto;
+      right: 10px;
+    }
+    .portfolio-ba-pane-inner {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 14px 18px;
+      min-height: 0;
+    }
+    .portfolio-ba-pane-inner img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      z-index: 1;
     }
-    .portfolio-card-visual:has(> img) .portfolio-card-placeholder {
-      display: none;
-    }
-    .portfolio-card-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-align: center;
-      padding: 20px;
-      color: rgba(255,255,255,.55);
-    }
-    .portfolio-card-placeholder i {
-      font-size: 2rem;
-      color: rgba(255,255,255,.35);
-    }
-    .portfolio-card-placeholder span {
-      font-size: .72rem;
+    .portfolio-ba-pane-hint {
+      margin: 0;
+      font-size: .64rem;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      max-width: 200px;
-      line-height: 1.35;
+      color: rgba(255,255,255,.42);
+      text-align: center;
+      max-width: 8rem;
+      line-height: 1.45;
+      z-index: 0;
     }
-    .portfolio-card:nth-child(1) .portfolio-card-placeholder { background: linear-gradient(160deg,#1e2a7a,#2d3ea0); }
-    .portfolio-card:nth-child(2) .portfolio-card-placeholder { background: linear-gradient(160deg,#141c5a,#263590); }
-    .portfolio-card:nth-child(3) .portfolio-card-placeholder { background: linear-gradient(160deg,#2d3ea0,#4a5bc4); }
-    .portfolio-card:nth-child(4) .portfolio-card-placeholder { background: linear-gradient(160deg,#9a1015,#c0181f); }
-    .portfolio-card:nth-child(5) .portfolio-card-placeholder { background: linear-gradient(160deg,#1e2a7a,#3d4db0); }
-    .portfolio-card:nth-child(6) .portfolio-card-placeholder { background: linear-gradient(160deg,#141c5a,#1e2a7a); }
+    .portfolio-ba-pane-inner:has(img) .portfolio-ba-pane-hint { display: none; }
 
     .portfolio-type-badge {
       position: absolute;
-      top: 12px;
+      bottom: 12px;
       left: 12px;
-      font-size: .6rem;
+      top: auto;
+      font-size: .58rem;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 7px 11px;
+      padding: 6px 10px;
       border-radius: var(--radius-sm);
-      background: rgba(255,255,255,.95);
+      background: rgba(255,255,255,.96);
       color: var(--navy-dark);
-      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+      box-shadow: 0 2px 10px rgba(0,0,0,.14);
+      z-index: 4;
     }
     .portfolio-card-body {
       padding: 22px 24px 20px;
@@ -1306,20 +1372,15 @@
       line-height: 1.6;
       margin: 0;
     }
+    p.portfolio-card-meta { margin: 0; }
     .portfolio-card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px 14px;
-      font-size: .72rem;
-      color: rgba(85,88,112,.85);
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: .72;
     }
-    .portfolio-card-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .portfolio-card-meta i { color: var(--red); font-size: .65rem; }
     .portfolio-highlights {
       list-style: none;
       margin: 4px 0 0;
@@ -1369,13 +1430,27 @@
        TESTIMONIALS
     =========================== */
     .testimonials {
-      background: linear-gradient(180deg, var(--white) 0%, var(--gray-light) 45%, var(--gray-light) 100%);
+      background: var(--white);
+      border-top: 1px solid var(--gray-mid);
     }
-    .testimonials .section-sub { max-width: 520px; margin-left: auto; margin-right: auto; }
+    .testimonials .section-tag {
+      background: rgba(192,24,31,.08);
+      color: var(--red-dark);
+      border: 1px solid rgba(192,24,31,.22);
+      padding: 6px 14px;
+      border-radius: 50px;
+      display: inline-block;
+    }
+    .testimonials .section-sub {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: clamp(1.2rem, 3vw, 1.65rem);
+    }
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(18px, 2.5vw, 24px);
+      gap: clamp(20px, 2.8vw, 28px);
       align-items: stretch;
     }
     .testimonial-card {
@@ -1510,13 +1585,21 @@
        CONTACT SECTION
     =========================== */
     .contact {
-      background: linear-gradient(180deg, var(--gray-light) 0%, var(--white) 22%);
+      background: var(--white);
       border-top: 1px solid var(--gray-mid);
+    }
+    .contact .section-tag {
+      color: var(--red-dark);
+      background: rgba(192,24,31,.07);
+      border: 1px solid rgba(192,24,31,.2);
+      padding: 6px 14px;
+      border-radius: 50px;
+      display: inline-block;
     }
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(280px, 1fr) minmax(300px, 1.35fr);
-      gap: clamp(28px, 4vw, 52px);
+      gap: clamp(32px, 4.5vw, 52px);
       align-items: start;
     }
     .contact-aside .section-title {
@@ -1525,45 +1608,43 @@
       max-width: 20em;
     }
     .contact-lead {
-      font-size: .95rem;
+      font-size: .93rem;
       color: var(--gray-text);
-      line-height: 1.65;
-      margin: 0 0 22px;
+      line-height: 1.58;
+      margin: 0 0 18px;
       max-width: 34em;
     }
-    .contact-trust-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .contact-trust-chips span {
-      font-size: .62rem;
-      font-weight: 800;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-      padding: 7px 11px;
-      border-radius: 6px;
-      background: var(--white);
-      border: 1px solid var(--gray-mid);
-      color: var(--navy-dark);
-    }
-    .contact-micro-line {
-      font-size: .78rem;
+    .contact-trust-line {
+      font-size: .76rem;
+      line-height: 1.5;
       color: var(--gray-text);
-      line-height: 1.55;
-      margin: 0 0 22px;
-      padding: 12px 14px;
-      background: rgba(255,255,255,.85);
-      border-radius: var(--radius);
-      border-left: 3px solid var(--red);
+      margin: 0 0 14px;
+      padding: 10px 14px;
+      background: var(--gray-light);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--navy);
+      max-width: 36em;
+    }
+    .contact-trust-line strong { color: var(--navy-dark); font-weight: 800; }
+    .contact-trust-line a {
+      font-weight: 800;
+      color: var(--navy-dark);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .contact-trust-line a:hover { color: var(--red); }
+    .contact-micro-line {
+      font-size: .76rem;
+      color: var(--gray-text);
+      line-height: 1.5;
+      margin: 0 0 18px;
     }
     .contact-micro-line strong { color: var(--navy-dark); }
     .contact-aside-phone {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       padding: 18px 20px;
       background: var(--navy-dark);
       border-radius: 12px;
@@ -1598,7 +1679,7 @@
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      margin-bottom: 18px;
+      margin-bottom: 0;
     }
     .contact-aside-details .c-icon {
       width: 44px;
@@ -1679,11 +1760,13 @@
       background: var(--white);
       border-radius: var(--radius-lg);
       padding: clamp(24px, 4vw, 40px);
-      border: 1px solid var(--gray-mid);
-      box-shadow: 0 8px 36px rgba(30,42,122,.08);
+      border: 1px solid rgba(30,42,122,.1);
+      box-shadow:
+        0 10px 40px rgba(30,42,122,.09),
+        0 0 0 1px rgba(255,255,255,.8);
     }
     .contact-form-header {
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .contact-form-header h3 {
       font-family: var(--body);
@@ -1702,12 +1785,13 @@
     .contact-form-trust-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-bottom: 22px;
-      padding: 12px 14px;
-      background: var(--gray-light);
+      gap: 8px 14px;
+      margin-bottom: 16px;
+      padding: 10px 13px;
+      background: rgba(244,245,249,.85);
       border-radius: 10px;
-      font-size: .72rem;
+      border: 1px solid rgba(30,42,122,.06);
+      font-size: .69rem;
       font-weight: 600;
       color: var(--gray-text);
     }
@@ -1715,7 +1799,6 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      white-space: nowrap;
     }
     .contact-form-trust-row i { color: var(--red); font-size: .65rem; }
 
@@ -1866,8 +1949,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: .82rem;
-      letter-spacing: 1.2px;
+      font-size: .84rem;
+      font-weight: 800;
+      letter-spacing: 1.35px;
+      box-shadow:
+        0 8px 28px rgba(192,24,31,.3),
+        0 0 0 1px rgba(192,24,31,.12);
     }
     .contact-form-footnote {
       font-size: .74rem;
@@ -1894,13 +1981,13 @@
     .footer {
       background: var(--navy-dark);
       color: rgba(255,255,255,.7);
-      padding: 70px 0 0;
+      padding: 56px 0 0;
     }
     .footer-grid {
       display: grid;
       grid-template-columns: 1.8fr 1fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 50px;
+      gap: 42px;
+      padding-bottom: 44px;
     }
     .footer-brand {}
     .footer-logo {
@@ -1956,6 +2043,7 @@
     .footer-links li { margin-bottom: 10px; }
     .footer-links a {
       font-size: .83rem;
+      line-height: 1.45;
       color: rgba(255,255,255,.55);
       transition: color .25s;
       display: flex;
@@ -2000,12 +2088,36 @@
     .footer-nap-phone a:hover { color: var(--white); }
     .footer-nap-area { margin: 10px 0 0; font-size: .72rem; color: rgba(255,255,255,.38); }
 
-    .service-area-bar-cta {
-      margin: 14px auto 0;
-      max-width: 520px;
-      font-size: .78rem;
+    .service-area-bar {
+      background: var(--navy-dark);
+      padding: clamp(22px, 4vw, 30px) 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .service-area-bar-title {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       color: rgba(255,255,255,.45);
-      line-height: 1.5;
+      margin: 0 0 8px;
+    }
+    .service-area-bar-copy {
+      font-size: .8rem;
+      color: rgba(255,255,255,.44);
+      line-height: 1.68;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 28px);
+      text-wrap: balance;
+    }
+    .service-area-bar-cta {
+      margin: 12px auto 0;
+      max-width: 520px;
+      font-size: .76rem;
+      color: rgba(255,255,255,.42);
+      line-height: 1.45;
+      padding: 0 clamp(16px, 4vw, 28px);
     }
     .service-area-bar-cta a {
       color: rgba(255,255,255,.92);
@@ -2139,17 +2251,18 @@
        PARTNER / CLEANING PROMO
     =========================== */
     .partner-banner {
-      background: linear-gradient(135deg, #f8f9ff 0%, var(--gray-light) 100%);
-      padding-block: var(--section-y);
+      background: var(--gray-light);
+      padding-block: clamp(2rem, 4.5vw, 2.75rem);
       position: relative;
       overflow: hidden;
+      border-top: 1px solid var(--gray-mid);
     }
     .partner-banner::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--navy), var(--red));
+      height: 2px;
+      background: rgba(30,42,122,.15);
     }
     .partner-inner {
       display: grid;
@@ -2158,13 +2271,18 @@
       align-items: center;
     }
     .partner-text {}
-    .partner-text .section-tag { margin-bottom: 6px; }
+    .partner-text .section-tag {
+      margin-bottom: 8px;
+      color: var(--gray-text);
+      letter-spacing: 1.8px;
+    }
     .partner-text h3 {
-      font-family: var(--script);
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      color: var(--navy);
-      margin-bottom: 14px;
-      line-height: 1.2;
+      font-family: var(--body);
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 800;
+      color: var(--navy-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
     .partner-text p {
       font-size: .93rem;
@@ -2175,7 +2293,7 @@
     .partner-text p strong { color: var(--navy); }
     .partner-highlights {
       list-style: none;
-      margin: 20px 0 0;
+      margin: 14px 0 0;
     }
     .partner-highlights li {
       display: flex;
@@ -2326,12 +2444,25 @@
 
     /* ── TABLET (≤ 1024px) ── */
     @media (max-width: 1024px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero .container { grid-template-columns: 1fr 1fr; }
-      .hero-content { padding: 32px 3vw 32px 28px; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 38px 40px;
+        row-gap: 36px;
+      }
+      .hero .container {
+        grid-template-columns: 1fr 1fr;
+        column-gap: clamp(12px, 2.5vw, 24px);
+      }
+      .hero-content { padding: clamp(22px, 3vw, 32px) clamp(16px, 3vw, 28px) clamp(26px, 3.5vw, 36px); }
       .hero-title { max-width: none; }
       .about .container { gap: 40px; }
       .why-us .container { gap: 40px; }
+    }
+
+    /* Tablet footer: two columns, comfortable link scan (769px–1024px) */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .footer-grid { column-gap: clamp(32px, 5vw, 48px); }
+      .footer-links li { margin-bottom: 11px; }
     }
 
     /* ── SMALL TABLET / LARGE PHONE (≤ 768px) ── */
@@ -2381,7 +2512,7 @@
         padding: 0;
       }
       .hero-content {
-        padding: 22px 20px 18px;
+        padding: 18px 20px 16px;
         text-align: left;
         align-items: stretch;
       }
@@ -2418,6 +2549,7 @@
       .btn-hero-primary { width: 100%; text-align: center; justify-content: center; }
       .btn-hero-secondary { width: 100%; text-align: center; }
       .hero-phone-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .hero-trust-micro { font-size: .62rem; letter-spacing: 1.15px; margin-bottom: 10px; line-height: 1.42; }
 
       /* ── Proof band ── */
       .proof-band { padding-block: clamp(1.5rem, 4vw, 2rem); }
@@ -2447,6 +2579,18 @@
         height: 44px;
       }
       .portfolio-ba-arrow i { transform: rotate(90deg); }
+      .portfolio-card-ba {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto 1fr;
+        aspect-ratio: auto;
+        min-height: 0;
+      }
+      .portfolio-card-ba .portfolio-ba-pane { min-height: 102px; }
+      .portfolio-ba-divider {
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--navy-dark) 0%, #0a0e28 50%, var(--navy-dark) 100%);
+      }
       .portfolio-filters {
         justify-content: flex-start;
         flex-wrap: nowrap;
@@ -2457,18 +2601,44 @@
         gap: 8px;
       }
       .portfolio-filter-btn { flex-shrink: 0; }
+      .portfolio-card-ba .portfolio-ba-pane-inner {
+        padding: 34px 14px 40px;
+      }
+      .portfolio-card-ba .portfolio-type-badge {
+        bottom: 10px;
+        left: 10px;
+      }
+      .portfolio-card-ba .portfolio-ba-pane-label {
+        top: 8px;
+        left: 8px;
+      }
+      .portfolio-card-ba .portfolio-ba-pane--after .portfolio-ba-pane-label {
+        left: auto;
+        right: 8px;
+      }
+      .portfolio-ba-pane-hint {
+        color: rgba(255,255,255,.5);
+      }
 
       /* ── Testimonials ── */
       .testimonials-grid { max-width: none; }
       .testimonial-card-inner { padding: 20px 20px 18px; }
 
       /* ── Contact ── */
-      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form-header { margin-bottom: 12px; }
+      .contact-form-trust-row {
+        margin-bottom: 14px;
+        padding: 9px 12px;
+        font-size: .67rem;
+        font-weight: 500;
+      }
       .contact-phone-banner { flex-direction: column; align-items: stretch; text-align: center; }
       .contact-phone-banner-text { max-width: none; }
       .contact-phone-banner-btn { width: 100%; justify-content: center; }
       .contact-aside-phone a { font-size: 1.28rem; }
       .form-row { grid-template-columns: 1fr; }
+      .contact-submit-btn { min-height: 54px; }
 
       /* ── Footer ── */
       .footer { padding: 50px 0 0; }
@@ -2476,6 +2646,9 @@
       .footer-logo img { height: 44px; }
       .footer-bottom .container { justify-content: center; text-align: center; }
       .footer-stripe { font-size: .65rem; letter-spacing: 2px; }
+
+      .service-area-bar { padding: clamp(20px, 4vw, 26px) 0; }
+      .service-area-bar-copy { line-height: 1.72; }
     }
 
     /* ── PHONE (≤ 480px) ── */
@@ -2495,6 +2668,7 @@
       .hero-cta-row { gap: 10px; margin-bottom: 12px; }
       .btn-hero-primary { padding: 14px 20px; font-size: .78rem; }
       .hero-phone-row a[href^="tel"] { font-size: .98rem; }
+      .hero-trust-micro { font-size: clamp(.58rem, 2.4vw, .62rem); letter-spacing: 1.05px; margin-bottom: 8px; line-height: 1.42; }
 
       /* ── Proof band ── */
       .proof-grid { gap: 10px; }
@@ -2521,9 +2695,10 @@
       .why-phone { font-size: 1.15rem; }
 
       /* ── Portfolio ── */
-      .portfolio-card-body { padding: 18px 18px 14px; }
-      .portfolio-card-cta { margin: 0 18px 18px; }
-      .portfolio-note { font-size: .78rem; margin-bottom: 22px; }
+      .portfolio-card-ba .portfolio-ba-pane { min-height: 96px; }
+      .portfolio-card-ba .portfolio-ba-pane-inner { padding: 32px 12px 42px; }
+      .portfolio-card-body { padding: 16px 16px 12px; gap: 10px; }
+      .portfolio-card-cta { margin: 0 16px 16px; }
       .portfolio-filter-btn { padding: 9px 14px; font-size: .62rem; }
 
       /* ── Testimonials ── */
@@ -2535,7 +2710,13 @@
 
       /* ── Contact ── */
       .contact-form-wrap { padding: 20px 16px; border-radius: var(--radius); }
-      .contact-form-trust-row { justify-content: center; font-size: .68rem; gap: 8px 14px; }
+      .contact-form-trust-row {
+        justify-content: center;
+        font-size: .66rem;
+        gap: 6px 12px;
+        margin-bottom: 12px;
+        padding: 8px 11px;
+      }
       .contact-aside-phone { padding: 16px 18px; }
       .contact-aside-phone a { font-size: 1.15rem; }
       .contact-aside-details .c-icon { width: 40px; height: 40px; font-size: .82rem; }
@@ -2549,6 +2730,9 @@
       .footer-bottom p { font-size: .7rem; }
       .footer-guarantee { font-size: .68rem; }
 
+      .service-area-bar-copy { font-size: .78rem; padding: 0 12px; }
+      .service-area-bar-cta { margin-top: 14px; }
+
       /* ── Buttons touch-friendly ── */
       .btn { padding: 14px 28px; font-size: .82rem; }
       .nav-cta { padding: 12px 20px !important; }
@@ -2557,6 +2741,13 @@
       .section-title { font-size: clamp(1.55rem, 6.5vw, 2.05rem); }
       .section-sub { font-size: .87rem; margin-bottom: clamp(1.5rem, 5vw, 2rem); line-height: 1.6; }
       .section-tag { font-size: .68rem; letter-spacing: 2px; }
+    }
+
+    /* ── Narrow phones (≤ 375px) — headline orphans + loc readability ── */
+    @media (max-width: 375px) {
+      .hero-title { font-size: 1.14rem; line-height: 1.2; margin-bottom: 8px; }
+      .hero-loc { font-size: .68rem; line-height: 1.45; }
+      .hero-benefit { font-size: .8rem; margin-bottom: 12px; }
     }
 
     /* ===========================
@@ -2578,6 +2769,14 @@
   </style>
 </head>
 <body>
+
+  <!--
+    PRODUCTION CHECKLIST (owner or developer — not visible to visitors):
+    • Contact form: replace YOUR_FORMSPREE_ID in the form action URL with the live Formspree endpoint ID.
+    • Hero image: use hero-professional-painters-lehigh-valley.png (rename on disk if you swap the asset; keep src in sync).
+    • Footer social: Facebook uses the public Page URL; Google icon opens a Maps search for the business; envelope scrolls to #contact — update Facebook/Maps if accounts change.
+    • Portfolio gallery: add paired job photos under images/gallery/ (see images/gallery/README.md) and uncomment or insert <img> in each .portfolio-ba-pane-inner per HTML comments.
+  -->
 
   <!-- =====================
        TOP BAR
@@ -2609,7 +2808,7 @@
         <li><a href="#why-hire-us" title="Why hire us — credentials and scope">Why us</a></li>
         <li><a href="#services" title="Interior painting services — residential, commercial, cabinets, faux">Services</a></li>
         <li><a href="#process" title="How we work from estimate through cleanup">How it works</a></li>
-        <li><a href="#portfolio" title="Interior painting project types we handle">Project types</a></li>
+        <li><a href="#portfolio" title="Project gallery and scope">Gallery</a></li>
         <li><a href="#testimonials" title="Client reviews">Reviews</a></li>
         <li><a href="#contact" class="nav-cta" title="Request a free estimate — call or contact form">Free estimate</a></li>
       </ul>
@@ -2631,6 +2830,7 @@
         <p class="hero-loc"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Interior painters · Lehigh Valley, PA — Allentown, Bethlehem, Easton &amp; nearby</p>
 
         <h1 class="hero-title">Lehigh Valley interior painting from <span class="hero-title-accent">prep to reset</span></h1>
+        <p class="hero-trust-micro">Interior-only · Fully insured · Owner on site</p>
         <p class="hero-benefit">Homes, offices, churches, banks, and medical interiors in the valley—we move what&rsquo;s in the way, prep surfaces properly, apply the right coatings, then clean up and put everything back. Gary stays involved on your job; you&rsquo;re not handed off to a sales-only crew.</p>
 
         <div class="hero-cta-row">
@@ -2645,7 +2845,7 @@
       </div>
 
       <div class="hero-right">
-        <img src="Residential Commercial Protessional Offices.png" alt="Residential and commercial interior painting by Gary L. Ebert &amp; Co., Lehigh Valley PA — Allentown, Bethlehem, Easton area" loading="eager" fetchpriority="high">
+        <img src="hero-professional-painters-lehigh-valley.png" alt="Residential and commercial interior painting by Gary L. Ebert &amp; Co., Lehigh Valley PA — Allentown, Bethlehem, Easton area" width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
     <div class="hero-split"></div>
@@ -2666,7 +2866,7 @@
           <div class="proof-tile-body">
             <span class="proof-tile-kicker">Track record</span>
             <strong class="proof-tile-title">35+ years in the trade</strong>
-            <span class="proof-tile-detail">Painting since 1990—family-trained, referral-built, still hands-on.</span>
+            <span class="proof-tile-detail">Painting since 1990—family-trained, still on the job with the crew.</span>
           </div>
         </li>
         <li class="proof-tile fade-up">
@@ -2731,7 +2931,7 @@
         <span class="section-tag">What We Offer</span>
         <h2 class="section-title">Interior Work, End to End</h2>
         <div class="divider"></div>
-        <p class="section-sub">We paint interiors only, for neighbors and businesses across the Lehigh Valley—Allentown, Bethlehem, Easton, and nearby towns. Residential painting, commercial and institutional interiors, cabinets, and faux finishes, with consultation, prep, and a neat handoff when we&rsquo;re finished.</p>
+        <p class="section-sub">Interiors only—homes, businesses, and institutions. Consultation, prep, finish, and handoff; details by scope are in the cards below. (Service area is covered up top—call if you&rsquo;re outside the usual towns.)</p>
       </div>
 
       <div class="services-grid">
@@ -2820,7 +3020,7 @@
           </ul>
         </div>
       </div>
-      <p class="section-outro fade-up">Ready to talk timing and rooms? <a href="#contact">Request a free estimate</a> or call <a href="tel:6103958755">(610) 395-8755</a>. Still deciding? See <a href="#process">how a typical job runs</a> or <a href="#portfolio">which project types we take on</a>.</p>
+      <p class="section-outro fade-up">Ready to talk timing and rooms? <a href="#contact">Request a free estimate</a> or call <a href="tel:6103958755">(610) 395-8755</a>. Still deciding? See <a href="#process">how a typical job runs</a> or browse the <a href="#portfolio">project gallery</a>.</p>
     </div>
   </section>
 
@@ -2875,7 +3075,7 @@
             <span>Step 5</span>
           </div>
           <h4>Optional Deep Clean</h4>
-          <p>Want a sparkling finish after we're gone? We coordinate with Lovely Lemon Cleaning—ask when you book.</p>
+          <p>Want a deeper clean when we&rsquo;re finished? We can introduce you to a trusted local cleaner and help line up timing—ask when you book.</p>
         </div>
       </div>
 
@@ -2908,7 +3108,7 @@
         <div class="divider"></div>
         <p>Gary L. Ebert learned the trade from his father—six decades in the business. That upbringing shaped how he works today: honest timelines, careful craftsmanship, and respect for every room he enters.</p>
         <p style="margin-top:14px;">He takes <strong>personal pride</strong> in the finish, not just getting the job done. That shows up as careful prep, protection of what you own, and a space that&rsquo;s ready to live in when we leave.</p>
-        <p style="margin-top:14px;">From residential painting in Emmaus or Easton to commercial interiors in Bethlehem or Allentown—offices, churches, banks, and healthcare included—our reputation was built on referrals. People remember crews who show up prepared and leave quietly.</p>
+        <p style="margin-top:14px;">From Emmaus to Easton, Bethlehem to Allentown—offices, churches, banks, and healthcare included—much of our work still comes from people who hired us before or were sent by someone who did. We try to earn that on every job.</p>
 
 
         <div class="scripture-banner">
@@ -2922,30 +3122,28 @@
   <!-- =====================
        PORTFOLIO SECTION
   ===================== -->
-  <section class="portfolio section-pad" id="portfolio" aria-label="Interior painting project types and scope — Gary L. Ebert and Co., Lehigh Valley">
+  <section class="portfolio section-pad" id="portfolio" aria-label="Interior painting project gallery and scope — Gary L. Ebert and Co.">
     <div class="container">
       <div class="text-center fade-up">
-        <span class="section-tag">Our Work</span>
-        <h2 class="section-title">Project types we deliver</h2>
+        <span class="section-tag">Gallery</span>
+        <h2 class="section-title">Project types &amp; photo pairs</h2>
         <div class="divider"></div>
-        <p class="section-sub">The cards below describe the kinds of work we take on for Lehigh Valley homeowners and businesses—prep, paint, cleanup, and reset included. <strong>We’re not passing off stock photos as your guarantee;</strong> on an estimate visit, ask to see real reference photos and before/afters that match your type of job.</p>
+        <p class="section-sub">Each card is a <strong>real scope description</strong>—not a made-up project. The paired frames are built for <strong>true before/after photos</strong> as you add them. On an estimate, ask to see reference work similar to yours.</p>
       </div>
 
-      <p class="portfolio-note fade-up"><strong>Photos:</strong> We’re adding project images here over time. Until then, use the cards to understand scope—then on a free estimate, ask for reference photos and before/after documentation for work similar to yours.</p>
-
-      <div class="portfolio-spotlight fade-up" aria-label="How we document transformation">
+      <div class="portfolio-spotlight fade-up" aria-label="How we document a job">
         <div class="portfolio-ba-strip">
           <div class="portfolio-ba-cell portfolio-ba-cell--before">
             <span class="portfolio-ba-label">Before</span>
-            <span class="portfolio-ba-sublabel">Existing surfaces, furniture in place, protection and full prep planned</span>
+            <span class="portfolio-ba-sublabel">Existing surfaces and conditions as we find them—protection and prep planned before paint.</span>
           </div>
           <div class="portfolio-ba-arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></div>
           <div class="portfolio-ba-cell portfolio-ba-cell--after">
             <span class="portfolio-ba-label">After</span>
-            <span class="portfolio-ba-sublabel">New coatings, detail cut-ins, cleanup, furniture reset—ready to use</span>
+            <span class="portfolio-ba-sublabel">Finished coatings, detail work complete, space tidied and ready to use.</span>
           </div>
         </div>
-        <p class="portfolio-spotlight-foot"><strong>What you’re hiring:</strong> That full arc—prep through reset—not just a quick coat. On a walkthrough, we’ll explain how we’d handle <em>your</em> rooms and answer questions face to face.</p>
+        <p class="portfolio-spotlight-foot"><strong>How to read the cards:</strong> Scope in text; visuals fill in as you add true project photos—never stock standing in for your job.</p>
       </div>
 
       <div class="portfolio-filters fade-up" id="portfolio-filters" role="toolbar" aria-label="Filter project types">
@@ -2959,19 +3157,29 @@
       <div class="portfolio-cards" id="portfolio-cards">
         <article class="portfolio-card fade-up" data-category="residential">
           <div class="portfolio-card-visual">
-            <!-- Photo: add <img src="..." alt="..."> before the placeholder; placeholder hides via CSS :has() -->
-            <div class="portfolio-card-placeholder">
-              <i class="fas fa-couch" aria-hidden="true"></i>
-              <span>Photo slot · living &amp; shared spaces</span>
+            <div class="portfolio-card-ba" role="group" aria-label="Before and after photos for this project type">
+              <div class="portfolio-ba-pane portfolio-ba-pane--before">
+                <span class="portfolio-ba-pane-label">Before</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Residential living area before interior painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
+              <div class="portfolio-ba-divider" aria-hidden="true"></div>
+              <div class="portfolio-ba-pane portfolio-ba-pane--after">
+                <span class="portfolio-ba-pane-label">After</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Residential living area after interior painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
             </div>
             <span class="portfolio-type-badge">Residential</span>
           </div>
           <div class="portfolio-card-body">
             <h3 class="portfolio-card-title">Living rooms, family rooms &amp; foyers</h3>
-            <p class="portfolio-card-scope">Typical scope: walls and ceilings, trim and doors, careful furniture handling and reset. Ideal when you’re refreshing main living areas without relocating everything yourself.</p>
-            <div class="portfolio-card-meta">
-              <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lehigh Valley service area</span>
-            </div>
+            <p class="portfolio-card-scope">Walls, ceilings, trim, and doors for the spaces you live in every day—prep and coatings matched to use and traffic, not a one-size finish.</p>
+            <p class="portfolio-card-meta">Typical home interior</p>
             <ul class="portfolio-highlights" aria-label="Scope highlights">
               <li>Walls</li>
               <li>Ceilings</li>
@@ -2984,18 +3192,29 @@
 
         <article class="portfolio-card fade-up" data-category="residential">
           <div class="portfolio-card-visual">
-            <div class="portfolio-card-placeholder">
-              <i class="fas fa-house-chimney" aria-hidden="true"></i>
-              <span>Photo slot · multi-room home</span>
+            <div class="portfolio-card-ba" role="group" aria-label="Before and after photos for this project type">
+              <div class="portfolio-ba-pane portfolio-ba-pane--before">
+                <span class="portfolio-ba-pane-label">Before</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Multi-room home before interior painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
+              <div class="portfolio-ba-divider" aria-hidden="true"></div>
+              <div class="portfolio-ba-pane portfolio-ba-pane--after">
+                <span class="portfolio-ba-pane-label">After</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Multi-room home after interior painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
             </div>
             <span class="portfolio-type-badge">Residential</span>
           </div>
           <div class="portfolio-card-body">
             <h3 class="portfolio-card-title">Whole-home interior refresh</h3>
-            <p class="portfolio-card-scope">Coordinated color plans across multiple rooms and hallways, consistent prep, and the same cleanup-and-reset standard from the first room to the last.</p>
-            <div class="portfolio-card-meta">
-              <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lehigh Valley service area</span>
-            </div>
+            <p class="portfolio-card-scope">Coordinated color across rooms and hallways, consistent prep and application from start to finish—one plan so the house feels intentional, not patched together.</p>
+            <p class="portfolio-card-meta">Multi-room homes</p>
             <ul class="portfolio-highlights">
               <li>Multi-room</li>
               <li>Hallways</li>
@@ -3008,18 +3227,29 @@
 
         <article class="portfolio-card fade-up" data-category="commercial">
           <div class="portfolio-card-visual">
-            <div class="portfolio-card-placeholder">
-              <i class="fas fa-building" aria-hidden="true"></i>
-              <span>Photo slot · office or suite</span>
+            <div class="portfolio-card-ba" role="group" aria-label="Before and after photos for this project type">
+              <div class="portfolio-ba-pane portfolio-ba-pane--before">
+                <span class="portfolio-ba-pane-label">Before</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Commercial interior before painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
+              <div class="portfolio-ba-divider" aria-hidden="true"></div>
+              <div class="portfolio-ba-pane portfolio-ba-pane--after">
+                <span class="portfolio-ba-pane-label">After</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Commercial interior after painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
             </div>
             <span class="portfolio-type-badge">Commercial</span>
           </div>
           <div class="portfolio-card-body">
             <h3 class="portfolio-card-title">Offices &amp; professional suites</h3>
-            <p class="portfolio-card-scope">Corridors, work areas, and common spaces painted to suit traffic and brand standards—with scheduling discussed up front so your team isn’t surprised.</p>
-            <div class="portfolio-card-meta">
-              <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lehigh Valley businesses</span>
-            </div>
+            <p class="portfolio-card-scope">Corridors, work areas, and common spaces painted to suit traffic and standards—with scheduling discussed up front so your team isn’t surprised.</p>
+            <p class="portfolio-card-meta">Office &amp; retail interiors</p>
             <ul class="portfolio-highlights">
               <li>Offices</li>
               <li>Corridors</li>
@@ -3032,18 +3262,29 @@
 
         <article class="portfolio-card fade-up" data-category="decorative">
           <div class="portfolio-card-visual">
-            <div class="portfolio-card-placeholder">
-              <i class="fas fa-layer-group" aria-hidden="true"></i>
-              <span>Photo slot · specialty finish</span>
+            <div class="portfolio-card-ba" role="group" aria-label="Before and after photos for this project type">
+              <div class="portfolio-ba-pane portfolio-ba-pane--before">
+                <span class="portfolio-ba-pane-label">Before</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Decorative finish area before (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
+              <div class="portfolio-ba-divider" aria-hidden="true"></div>
+              <div class="portfolio-ba-pane portfolio-ba-pane--after">
+                <span class="portfolio-ba-pane-label">After</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Decorative finish area after (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
             </div>
             <span class="portfolio-type-badge">Decorative</span>
           </div>
           <div class="portfolio-card-body">
             <h3 class="portfolio-card-title">Faux, texture &amp; accent features</h3>
             <p class="portfolio-card-scope">Accent walls, glazes, venetian plaster, and other decorative systems—scoped and sampled so you see how the finish behaves in your light before we commit the whole surface.</p>
-            <div class="portfolio-card-meta">
-              <span><i class="fas fa-comments" aria-hidden="true"></i> By consultation</span>
-            </div>
+            <p class="portfolio-card-meta">Sample-driven work</p>
             <ul class="portfolio-highlights">
               <li>Faux</li>
               <li>Texture</li>
@@ -3056,18 +3297,29 @@
 
         <article class="portfolio-card fade-up" data-category="cabinets">
           <div class="portfolio-card-visual">
-            <div class="portfolio-card-placeholder">
-              <i class="fas fa-door-closed" aria-hidden="true"></i>
-              <span>Photo slot · cabinets</span>
+            <div class="portfolio-card-ba" role="group" aria-label="Before and after photos for this project type">
+              <div class="portfolio-ba-pane portfolio-ba-pane--before">
+                <span class="portfolio-ba-pane-label">Before</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Kitchen or bath cabinets before refinishing (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
+              <div class="portfolio-ba-divider" aria-hidden="true"></div>
+              <div class="portfolio-ba-pane portfolio-ba-pane--after">
+                <span class="portfolio-ba-pane-label">After</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Kitchen or bath cabinets after refinishing (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
             </div>
             <span class="portfolio-type-badge">Cabinets</span>
           </div>
           <div class="portfolio-card-body">
             <h3 class="portfolio-card-title">Kitchen &amp; bath cabinet refinishing</h3>
             <p class="portfolio-card-scope">Cabinet faces, frames, and built-ins—paint or stain systems chosen for kitchens and baths instead of a shortcut that won’t hold up to daily use.</p>
-            <div class="portfolio-card-meta">
-              <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Mostly residential</span>
-            </div>
+            <p class="portfolio-card-meta">Kitchen &amp; bath focus</p>
             <ul class="portfolio-highlights">
               <li>Cabinets</li>
               <li>Built-ins</li>
@@ -3080,18 +3332,29 @@
 
         <article class="portfolio-card fade-up" data-category="commercial">
           <div class="portfolio-card-visual">
-            <div class="portfolio-card-placeholder">
-              <i class="fas fa-place-of-worship" aria-hidden="true"></i>
-              <span>Photo slot · institutional interior</span>
+            <div class="portfolio-card-ba" role="group" aria-label="Before and after photos for this project type">
+              <div class="portfolio-ba-pane portfolio-ba-pane--before">
+                <span class="portfolio-ba-pane-label">Before</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Church or institutional interior before painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
+              <div class="portfolio-ba-divider" aria-hidden="true"></div>
+              <div class="portfolio-ba-pane portfolio-ba-pane--after">
+                <span class="portfolio-ba-pane-label">After</span>
+                <div class="portfolio-ba-pane-inner">
+                  <!-- Add: <img src="" alt="Church or institutional interior after painting (your project)"> -->
+                  <p class="portfolio-ba-pane-hint">Your photo</p>
+                </div>
+              </div>
             </div>
             <span class="portfolio-type-badge">Commercial / institutional</span>
           </div>
           <div class="portfolio-card-body">
             <h3 class="portfolio-card-title">Churches &amp; institutional interiors</h3>
             <p class="portfolio-card-scope">Sanctuaries, halls, offices, and gathering spaces where durability and appearance both matter—planned access and protection appropriate for public buildings.</p>
-            <div class="portfolio-card-meta">
-              <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Lehigh Valley &amp; nearby</span>
-            </div>
+            <p class="portfolio-card-meta">Institutional interior</p>
             <ul class="portfolio-highlights">
               <li>Sanctuary / hall</li>
               <li>Public spaces</li>
@@ -3194,16 +3457,15 @@
       <div class="why-us-content fade-up">
         <span class="section-tag">Next step</span>
         <h2 class="section-title">Talk with Gary directly</h2>
-        <p>Gary still works alongside his crew and answers to clients directly. That shows up in the details other teams rush past—and it's why so much of our calendar comes from repeat customers and referrals.</p>
+        <p>Gary still works alongside his crew and answers to clients directly. That shows up in the details other teams rush past—and it&rsquo;s why a large share of our calendar is return work or people who were pointed our way.</p>
       </div>
       <div class="why-cta-box fade-up">
         <h3>Schedule a walkthrough</h3>
         <p>Call with questions, or request an estimate—we’ll see the space with you and map a clear plan. No obligation to move forward.</p>
         <a href="tel:6103958755" class="why-phone"><i class="fas fa-phone-alt"></i>(610) 395-8755</a>
         <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center;">Request a free estimate</a>
-        <div class="why-badge">
+        <div class="why-badge" aria-hidden="true">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <span style="margin-left:4px;">Trusted Since 1990</span>
         </div>
       </div>
     </div>
@@ -3237,7 +3499,7 @@
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p>We serve the entire Lehigh Valley including Allentown, Bethlehem, Easton, Emmaus, Macungie, Whitehall, Catasauqua, Coopersburg, Quakertown, Saucon Valley, Upper Macungie, Lower Macungie, Salisbury Township, and all surrounding communities in the Lehigh and Northampton County areas.</p>
+            <p>We work throughout the Lehigh Valley and nearby Northampton and Lehigh County communities—including Allentown, Bethlehem, Easton, Emmaus, Macungie, Nazareth, Whitehall, and many surrounding towns. Call if you&rsquo;re unsure whether you&rsquo;re in range.</p>
           </div>
         </div>
         <div class="faq-item fade-up">
@@ -3246,7 +3508,7 @@
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p>Since 1990. Gary learned from his father, a painter for 60 years—integrity and craft passed down, not just techniques. Most new work still comes from referrals.</p>
+            <p>Since 1990. Gary learned from his father, a painter for 60 years—integrity and craft passed down, not just techniques.</p>
           </div>
         </div>
         <div class="faq-item fade-up">
@@ -3273,7 +3535,7 @@
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p>Always. We haul out job debris, tidy the space, and put furniture back. Optional deep cleaning is available through Lovely Lemon Cleaning.</p>
+            <p>Always. We haul out job debris, tidy the space, and put furniture back. If you want a deeper clean afterward, we can refer a local company—see the optional add-on near the bottom of this page.</p>
           </div>
         </div>
         <div class="faq-item fade-up">
@@ -3301,30 +3563,27 @@
   <!-- =====================
        PARTNER CLEANING PROMO
   ===================== -->
-  <section class="partner-banner" id="partner">
+  <section class="partner-banner" id="partner" aria-label="Optional cleaning referral — separate from painting">
     <div class="container">
       <div class="partner-inner">
         <div class="partner-text fade-up">
-          <span class="section-tag">Recommended Add-On</span>
-          <h3>Optional deep clean after paint</h3>
-          <p>When the paint is dry and the room is reset, some clients want a professional cleaning pass. We work with <strong>Lovely Lemon Cleaning</strong>—a local company we trust—and can help coordinate timing so you’re not juggling two schedules alone.</p>
-          <p>Lovely Lemon also handles move-in/move-out work, recurring home cleaning, and commercial spaces, with the same attention to detail we expect on our own projects.</p>
+          <span class="section-tag">Separate service</span>
+          <h3>Optional cleaning (not required for painting)</h3>
+          <p>Painting is what we do. Some clients want a professional cleaning pass <em>after</em> we&rsquo;re done; we refer <strong>Lovely Lemon Cleaning</strong>, a local company, and can help line up timing if you ask.</p>
           <ul class="partner-highlights">
-            <li><i class="fas fa-check-circle"></i>Post-painting deep cleaning</li>
-            <li><i class="fas fa-check-circle"></i>Move-in / move-out cleaning</li>
-            <li><i class="fas fa-check-circle"></i>Recurring residential cleaning</li>
-            <li><i class="fas fa-check-circle"></i>Commercial &amp; office cleaning</li>
-            <li><i class="fas fa-check-circle"></i>Separate local business—we refer when it fits</li>
+            <li><i class="fas fa-check-circle"></i>Post-paint deep clean (by request)</li>
+            <li><i class="fas fa-check-circle"></i>Other cleaning services—you&rsquo;ll work with them directly</li>
+            <li><i class="fas fa-check-circle"></i>Independent business; we don&rsquo;t mark up their work</li>
           </ul>
         </div>
         <div class="partner-card fade-up">
-          <img src="LovelyLemon.png" alt="The Lovely Lemon Cleaning Co. — Professional residential and commercial cleaning in the Lehigh Valley, PA" class="partner-logo-img">
+          <img src="LovelyLemon.png" alt="The Lovely Lemon Cleaning Co. — residential and commercial cleaning, Lehigh Valley PA" class="partner-logo-img" loading="lazy">
           <div class="partner-card-body">
-            <h4>The Lovely Lemon Cleaning Co.</h4>
-            <p>Our trusted local cleaning partner. Ask us when scheduling your painting project and we'll coordinate everything for you — one call does it all.</p>
-            <a href="#contact" class="btn btn-primary">Ask About Cleaning Add-On</a>
+            <h4>Lovely Lemon Cleaning Co.</h4>
+            <p>Contact us about painting first; mention cleaning in your message if you want an introduction.</p>
+            <a href="#contact" class="btn btn-primary">Mention cleaning in your estimate request</a>
             <div class="partner-badge">
-              <i class="fas fa-handshake"></i>Vetted &amp; Recommended by Gary L. Ebert &amp; Co.
+              <i class="fas fa-info-circle"></i>Referral only—not affiliated payroll
             </div>
           </div>
         </div>
@@ -3341,16 +3600,11 @@
         <span class="section-tag">Free estimate</span>
         <h2 class="section-title">Call or write—whichever is easier</h2>
         <div class="divider"></div>
-        <p class="contact-lead">Describe the rooms or building you have in mind. We&rsquo;ll confirm we&rsquo;re the right fit, suggest a time to walk the space together, and answer your questions—<strong>no pressure</strong> to hire us just to get a number.</p>
+        <p class="contact-lead">Tell us what you&rsquo;re thinking about—we&rsquo;ll follow up to schedule a walkthrough and quote. <strong>No pressure</strong> to hire us just to get a number.</p>
 
-        <div class="contact-trust-chips" aria-label="Credentials">
-          <span>35+ years</span>
-          <span>Fully insured</span>
-          <span>Lehigh Valley</span>
-          <span>Residential &amp; commercial</span>
-        </div>
+        <p class="contact-trust-line" role="note">Credentials and service area are summarized <a href="#why-hire-us">in the section above</a>—this block stays short on purpose.</p>
 
-        <p class="contact-micro-line"><strong>Free in-person walkthrough &amp; quote</strong> · <strong>No obligation</strong> · We aim to reply within <strong>one business day</strong> (sooner when we can)</p>
+        <p class="contact-micro-line"><strong>Free walkthrough &amp; quote</strong> · <strong>No obligation</strong> · Reply within about <strong>one business day</strong></p>
 
         <div class="contact-aside-phone">
           <span>Call the office</span>
@@ -3362,15 +3616,8 @@
           <li>
             <span class="c-icon" aria-hidden="true"><i class="fas fa-map-marker-alt"></i></span>
             <div class="c-text">
-              <h3>Service area</h3>
-              <p>Lehigh Valley, Pennsylvania—including Allentown, Bethlehem, Easton, Emmaus, Macungie, and nearby towns. Homes, offices, churches, banks, healthcare, and other institutional interiors.</p>
-            </div>
-          </li>
-          <li>
-            <span class="c-icon" aria-hidden="true"><i class="fas fa-shield-alt"></i></span>
-            <div class="c-text">
-              <h3>Licensed &amp; insured</h3>
-              <p>Your property and our crew are covered—ask anytime if you need documentation for your board or landlord.</p>
+              <h3>Area &amp; coverage</h3>
+              <p>Valley-wide interior work—homes, offices, churches, banks, healthcare, and similar. Need a COI or proof of insurance? Ask when you call or in the form.</p>
             </div>
           </li>
         </ul>
@@ -3385,14 +3632,13 @@
         <div class="contact-form-wrap">
           <header class="contact-form-header">
             <h3>Estimate request</h3>
-            <p>Takes about a minute. Add rough room count or square footage if you know it—Gary or our office will follow up to schedule a visit, usually by phone.</p>
+            <p>About a minute. Room count or rough size helps—we&rsquo;ll call or email to set a walkthrough.</p>
           </header>
 
           <div class="contact-form-trust-row" aria-label="What to expect">
-            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Free walkthrough &amp; quote</span>
-            <span><i class="fas fa-check-circle" aria-hidden="true"></i> No obligation</span>
-            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Not sold to marketers</span>
-            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Reply within ~1 business day</span>
+            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Free quote · no obligation</span>
+            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Info not sold</span>
+            <span><i class="fas fa-check-circle" aria-hidden="true"></i> ~1 business day reply</span>
           </div>
 
           <div id="form-success" class="form-alert form-alert--success" role="status" aria-live="polite" tabindex="-1">
@@ -3477,13 +3723,11 @@
   <!-- =====================
        SERVICE AREA (Local SEO)
   ===================== -->
-  <div class="service-area-bar" style="background:var(--navy-dark); padding:28px 0; text-align:center;">
+  <div class="service-area-bar">
     <div class="container">
-      <p style="font-size:.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:8px;">Proudly Serving the Lehigh Valley &amp; Surrounding Communities</p>
-      <p style="font-size:.78rem; color:rgba(255,255,255,.35); line-height:1.8;">
-        Allentown · Bethlehem · Easton · Emmaus · Macungie · Whitehall · Catasauqua · Coopersburg · Quakertown · Saucon Valley · Upper Macungie · Lower Macungie · Salisbury Township · Hanover Township · Palmer Township · Forks Township · Nazareth · Bath · Northampton · Hellertown · Fountain Hill · Ancient Oaks · Breinigsville · Trexlertown · Schnecksville · Orefield · Center Valley · Zionsville
-      </p>
-      <p class="service-area-bar-cta"><a href="#contact">Request a free estimate</a> for interior painting anywhere we travel in the valley.</p>
+      <p class="service-area-bar-title">Service area</p>
+      <p class="service-area-bar-copy">Lehigh Valley and nearby Northampton &amp; Lehigh County communities—including Allentown, Bethlehem, Easton, Emmaus, Macungie, Nazareth, Whitehall, and many surrounding towns. <strong>Not sure if you&rsquo;re in range? Call.</strong></p>
+      <p class="service-area-bar-cta"><a href="#contact">Request a free estimate</a></p>
     </div>
   </div>
 
@@ -3492,58 +3736,48 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo"><img src="Top banner.png" alt="Gary L. Ebert &amp; Co. — Lehigh Valley interior painters, Allentown Bethlehem Easton PA"></div>
-          <p class="footer-tagline">Interior painters serving the Lehigh Valley since 1990—Allentown, Bethlehem, Easton, and nearby. Residential painting, commercial interiors, cabinets, and faux finishes. Furniture, prep, paint, cleanup, and reset handled in-house.</p>
+          <p class="footer-tagline">Interior painting—prep through finish—for the Lehigh Valley. Established 1990.</p>
           <div class="footer-nap">
-            <p class="footer-nap-line"><span class="footer-nap-name">Gary L. Ebert &amp; Co.</span> · Lehigh Valley, Pennsylvania</p>
+            <p class="footer-nap-line"><span class="footer-nap-name">Gary L. Ebert &amp; Co.</span> · Lehigh Valley, PA</p>
             <p class="footer-nap-phone"><a href="tel:6103958755">(610) 395-8755</a></p>
-            <p class="footer-nap-area">Allentown · Bethlehem · Easton · residential &amp; commercial interior painting</p>
           </div>
           <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-google"></i></a>
-            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/100063567831863/" class="social-link" title="Gary L. Ebert &amp; Co. on Facebook" rel="noopener noreferrer" target="_blank" aria-label="Gary L. Ebert and Co. on Facebook (opens in new tab)"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.google.com/maps/search/Gary+L+Ebert+%26+Co+Professional+Painters+610+395+8755" class="social-link" title="Find Gary L. Ebert &amp; Co. on Google Maps" rel="noopener noreferrer" target="_blank" aria-label="Search for Gary L. Ebert and Co. on Google Maps (opens in new tab)"><i class="fab fa-google" aria-hidden="true"></i></a>
+            <a href="#contact" class="social-link" title="Contact form — free estimate" aria-label="Go to contact form"><i class="fas fa-envelope" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="footer-col">
-          <h4>Quick Links</h4>
+          <h4>On this page</h4>
           <ul class="footer-links">
-            <li><a href="#home" title="Gary L. Ebert &amp; Co. interior painters">Home</a></li>
-            <li><a href="#why-hire-us" title="Why hire us — credentials and differentiators">Why hire us</a></li>
-            <li><a href="#services" title="Residential &amp; commercial interior painting services">Services</a></li>
-            <li><a href="#process" title="How we work from estimate through cleanup">How it works</a></li>
-            <li><a href="#about" title="About our Lehigh Valley painting company">Our story</a></li>
-            <li><a href="#portfolio" title="Project types — Allentown, Bethlehem, Easton area">Project types</a></li>
-            <li><a href="#testimonials" title="Client testimonials">Reviews</a></li>
-            <li><a href="#faq" title="Frequently asked questions">FAQ</a></li>
-            <li><a href="#contact" title="Free painting estimate — call (610) 395-8755">Free estimate</a></li>
+            <li><a href="#why-hire-us" title="Why hire us">Why hire us</a></li>
+            <li><a href="#services" title="Services">Services</a></li>
+            <li><a href="#portfolio" title="Project gallery">Gallery</a></li>
+            <li><a href="#testimonials" title="Reviews">Reviews</a></li>
+            <li><a href="#contact" title="Free estimate">Free estimate</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Services</h4>
+          <h4>More</h4>
           <ul class="footer-links">
-            <li><a href="#services" title="Residential interior painting">Interior Painting</a></li>
-            <li><a href="#services" title="Full-service prep through reset">Full-Service Interior</a></li>
-            <li><a href="#services" title="Commercial interior painting Lehigh Valley">Commercial &amp; Institutional</a></li>
-            <li><a href="#services" title="Color consultation">Color Consultation</a></li>
-            <li><a href="#services" title="Cabinet painting &amp; refinishing">Cabinet &amp; Wood Refinishing</a></li>
-            <li><a href="#services" title="Drywall &amp; surface prep">Surface Prep &amp; Repair</a></li>
-            <li><a href="#partner" title="Post-paint cleaning partner">Cleaning Partner Add-On</a></li>
+            <li><a href="#process" title="How we work">How it works</a></li>
+            <li><a href="#about" title="Our story">Our story</a></li>
+            <li><a href="#faq" title="FAQ">FAQ</a></li>
+            <li><a href="#partner" title="Optional cleaning referral">Cleaning referral</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <ul class="footer-contact-list">
             <li><i class="fas fa-phone-alt"></i><a href="tel:6103958755" style="color:rgba(255,255,255,.55);">(610) 395-8755</a></li>
-            <li><i class="fas fa-map-marker-alt"></i>Lehigh Valley, PA</li>
             <li><i class="fas fa-clock"></i>Mon–Sat: 8am–6pm</li>
-            <li><i class="fas fa-shield-alt"></i>Fully Insured</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="footer-stripe">
-      ⭐ Interior specialists · Prep through reset · Lehigh Valley since 1990 ⭐
+      Interior painting · Lehigh Valley, PA
     </div>
 
     <div class="footer-bottom">
@@ -3551,7 +3785,7 @@
         <p>© 2026 Gary L. Ebert &amp; Co. All Rights Reserved.</p>
         <div class="footer-guarantee">
           <i class="fas fa-star"></i>
-          Trusted · Insured · Guaranteed
+          Local · Insured
         </div>
       </div>
     </div>
